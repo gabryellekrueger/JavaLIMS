@@ -1,0 +1,203 @@
+package interfaceGrafica;
+
+import java.awt.Color;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import java.awt.Component;
+import javax.swing.ImageIcon;
+import javax.swing.JTextPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JComboBox;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import javax.swing.JTextArea;
+
+public class PanelInventario extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelInventario() {
+		setFont(new Font("Times New Roman", Font.PLAIN, 25));
+
+		setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+		setOpaque(false);
+		setBounds(275, 150, 1305, 730);
+		setVisible(true);
+		setLayout(null);
+
+		JPanel pnlListaReagentes = new JPanel();
+		pnlListaReagentes.setBounds(31, 84, 249, 59);
+		pnlListaReagentes.setBackground(new Color(213, 239, 236));
+		add(pnlListaReagentes);
+		pnlListaReagentes.setLayout(null);
+
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(10, 11, 229, 36);
+		pnlListaReagentes.add(comboBox);
+
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(353, 46, 309, 97);
+		panel_1.setBackground(new Color(213, 239, 236));
+		add(panel_1);
+		panel_1.setLayout(null);
+		
+				JLabel lblMolaridade = new JLabel("Concentração");
+				lblMolaridade.setBounds(10, 46, 289, 40);
+				panel_1.add(lblMolaridade);
+				lblMolaridade.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						lblMolaridade.setText(JOptionPane.showInputDialog(lblMolaridade, "Insira a concentração:"));
+						lblMolaridade.setForeground(new Color(17, 69, 89));
+					}
+				});
+				lblMolaridade.setHorizontalAlignment(SwingConstants.CENTER);
+				lblMolaridade.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+				lblMolaridade.setForeground(new Color(17, 69, 89));
+				
+						JLabel lblNomeReagente = new JLabel("Reagente");
+						lblNomeReagente.setBounds(10, 11, 289, 40);
+						panel_1.add(lblNomeReagente);
+						lblNomeReagente.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								lblNomeReagente.setText(JOptionPane.showInputDialog(lblNomeReagente, "Insira o nome do reagente:"));
+								lblNomeReagente.setForeground(new Color(17, 69, 89));
+							}
+						});
+						lblNomeReagente.setHorizontalAlignment(SwingConstants.CENTER);
+						lblNomeReagente.setFont(new Font("Times New Roman", Font.BOLD, 25));
+						lblNomeReagente.setForeground(new Color(17, 69, 89));
+
+		JLabel lblFormula = new JLabel("F\u00F3rmula:");
+		lblFormula.setBounds(49, 214, 109, 40);
+		lblFormula.setHorizontalAlignment(SwingConstants.LEFT);
+		lblFormula.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		lblFormula.setForeground(new Color(17, 69, 89));
+		add(lblFormula);
+
+		JLabel lblPreparadoPor = new JLabel("Preparado por:");
+		lblPreparadoPor.setBounds(49, 265, 170, 40);
+		lblPreparadoPor.setHorizontalAlignment(SwingConstants.LEFT);
+		lblPreparadoPor.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		lblPreparadoPor.setForeground(new Color(17, 69, 89));
+		add(lblPreparadoPor);
+
+		JLabel lblQtdMinima = new JLabel("Quantidade m\u00EDnima:");
+		lblQtdMinima.setBounds(49, 316, 227, 40);
+		lblQtdMinima.setHorizontalAlignment(SwingConstants.LEFT);
+		lblQtdMinima.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		lblQtdMinima.setForeground(new Color(17, 69, 89));
+		add(lblQtdMinima);
+
+		JLabel lblQtdAtual = new JLabel("Quantidade atual:");
+		lblQtdAtual.setBounds(49, 378, 193, 31);
+		lblQtdAtual.setHorizontalAlignment(SwingConstants.LEFT);
+		lblQtdAtual.setFont(new Font("Times New Roman", Font.BOLD, 25));
+		lblQtdAtual.setForeground(new Color(17, 69, 89));
+		add(lblQtdAtual);
+
+		JPanel pnlListaReagentes_1 = new JPanel();
+		pnlListaReagentes_1.setBounds(730, 46, 537, 646);
+		add(pnlListaReagentes_1);
+		pnlListaReagentes_1.setLayout(null);
+		pnlListaReagentes_1.setBackground(new Color(213, 239, 236));
+
+		JLabel iconAviso = new JLabel("");
+		iconAviso.setIcon(new ImageIcon(PanelInventario.class.getResource("/res/Aviso Reagente.png")));
+		iconAviso.setBackground(new Color(0, 0, 153));
+		iconAviso.setBounds(222, 11, 100, 111);
+		pnlListaReagentes_1.add(iconAviso);
+
+		JTextArea txtAvisos = new JTextArea();
+		txtAvisos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtAvisos.setText("");
+				txtAvisos.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+				txtAvisos.setForeground(new Color(17, 69, 89));
+			}
+		});
+		txtAvisos.setText("Inserir avisos e precauções");
+		txtAvisos.setForeground(Color.LIGHT_GRAY);
+		txtAvisos.setFont(new Font("Arial", Font.PLAIN, 20));
+		txtAvisos.setBounds(41, 142, 455, 462);
+		pnlListaReagentes_1.add(txtAvisos);
+		txtAvisos.setLineWrap(true);
+		txtAvisos.setWrapStyleWord(true);
+		
+
+		JLabel btnInserirFormula = new JLabel("Inserir f\u00F3rmula");
+		btnInserirFormula.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnInserirFormula.setText(JOptionPane.showInputDialog(btnInserirFormula, "Insira a fórmula química do composto:"));
+				btnInserirFormula.setForeground(new Color(17, 69, 89));
+				btnInserirFormula.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+			}
+		});
+		btnInserirFormula.setHorizontalAlignment(SwingConstants.LEFT);
+		btnInserirFormula.setForeground(Color.LIGHT_GRAY);
+		btnInserirFormula.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnInserirFormula.setBounds(168, 214, 552, 40);
+		add(btnInserirFormula);
+
+		JLabel btnInserirNome = new JLabel("Inserir nome");
+		btnInserirNome.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnInserirNome.setText(JOptionPane.showInputDialog(btnInserirNome, "Insira o nome do químico ou empresa responsável pela preparação:"));
+				btnInserirNome.setForeground(new Color(17, 69, 89));
+				btnInserirNome.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+			}
+		});
+		btnInserirNome.setHorizontalAlignment(SwingConstants.LEFT);
+		btnInserirNome.setForeground(Color.LIGHT_GRAY);
+		btnInserirNome.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnInserirNome.setBounds(229, 265, 491, 40);
+		add(btnInserirNome);
+
+		JLabel btnQtdMinima = new JLabel("Inserir quantidade m\u00EDnima");
+		btnQtdMinima.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnQtdMinima.setText(JOptionPane.showInputDialog(btnQtdMinima, "Insira a quantidade mínima de reagente:"));
+				btnQtdMinima.setForeground(new Color(17, 69, 89));	
+				btnQtdMinima.setFont(new Font("Times New Roman", Font.PLAIN, 24));
+			}
+		});
+		btnQtdMinima.setHorizontalAlignment(SwingConstants.LEFT);
+		btnQtdMinima.setForeground(Color.LIGHT_GRAY);
+		btnQtdMinima.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnQtdMinima.setBounds(289, 316, 431, 40);
+		add(btnQtdMinima);
+
+		JLabel lblReagentes = new JLabel("Reagentes");
+		lblReagentes.setHorizontalAlignment(SwingConstants.LEFT);
+		lblReagentes.setForeground(new Color(17, 69, 89));
+		lblReagentes.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblReagentes.setBounds(30, 46, 109, 40);
+		add(lblReagentes);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(260, 378, 122, 29);
+		add(textField_1);
+		textField_1.setColumns(10);
+
+	}
+}
