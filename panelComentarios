@@ -1,0 +1,53 @@
+package interfaceGrafica;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+
+public class PanelComentarios extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public PanelComentarios() {
+
+		setBounds(275, 150, 1305, 730);
+		setVisible(true);
+		setLayout(null);
+		setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
+		setOpaque(false);
+		
+		JPanel pnlComentarios = new JPanel();
+		pnlComentarios.setBackground(new Color(213, 239, 236));
+		pnlComentarios.setBounds(203, 185, 911, 502);
+		add(pnlComentarios);
+		pnlComentarios.setLayout(null);
+		
+		JTextArea txtComentario = new JTextArea();
+		txtComentario.setBounds(10, 11, 891, 480);
+		pnlComentarios.add(txtComentario);
+		txtComentario.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtComentario.setText("");
+				txtComentario.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+				txtComentario.setForeground(new Color(17, 69, 89));
+			}
+		});
+		txtComentario.setText("Inserir comentário acerca das análises/acontecimentos do dia");
+		txtComentario.setForeground(Color.LIGHT_GRAY);
+		txtComentario.setFont(new Font("Arial", Font.PLAIN, 20));
+		txtComentario.setLineWrap(true);
+		txtComentario.setWrapStyleWord(true);
+		
+		
+	}
+}
